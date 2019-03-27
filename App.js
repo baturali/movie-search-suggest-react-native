@@ -12,7 +12,7 @@ import { StyleSheet, Image } from 'react-native';
 import { fetchAllCurrencies } from './actions';
 import { connect } from 'react-redux';
 import { Container, Header, Item, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Input, Badge, Spinner, Drawer, Card, CardItem } from 'native-base';
-import SideBar from './components/SideBar.js'
+import FilmCard from './components/film';
 
 function debounce(a,b,c){var d,e;return function(){function h(){d=null,c||(e=a.apply(f,g))}var f=this,g=arguments;return clearTimeout(d),d=setTimeout(h,b),c&&!d&&(e=a.apply(f,g)),e}}
 const Bounce = 300
@@ -62,8 +62,6 @@ class App extends Component {
             }
             this.setState({
               films: newFilms,
-              currentPage: 1,
-              viewedPages: [1]
             })
           } else {
             for (var obj of tenResult.Search) {
@@ -87,12 +85,22 @@ class App extends Component {
     }
   }
   render() {
+    let { films } = this.state
+
     closeDrawer = () => {
       this.drawer._root.close()
     };
     openDrawer = () => {
       this.drawer._root.open()
     };
+
+    const renderFilms = films.map((film, index) => {
+      return (
+        <Container key={index}>
+          <FilmCard filmInfo={film} />
+        </Container>
+      )
+    })
     return (
       <Container>
         <Content>
@@ -104,56 +112,18 @@ class App extends Component {
           </Header>
           
           <Card style={{flex: 0, marginTop: 20}}>
-            <CardItem>
-              <Left>
-                <Body style={{textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
-                  <Text style={{fontSize: 34}}>Film Name</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem>
-              <Body style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Image 
-                  source={{uri: 'http://tr.web.img4.acsta.net/r_1280_720/pictures/bzp/01/121163.jpg'}} 
-                  style={{height: 400, width: 300, padding: 15}}/>
-                <Text style={{marginTop: 25}}>
-                  //Your text here
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent textStyle={{color: '#87838B'}}>
-                  <Icon name="logo-github" />
-                  <Text>1,926 stars</Text>
-                </Button>
-              </Left>
-            </CardItem>
+            {!renderFilms.length &&
+              <Text className='defaultText'>
+                Type any Film name you want to search!
+              </Text>
+            }
+            {renderFilms}
           </Card>
         </Content>
       </Container>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 const mapStateToProps = state => {
   return {
