@@ -3,13 +3,13 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../ExchangeRates/gen" />
-        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../ExchangeRates/gen" />
-        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../ExchangeRates/AndroidManifest.xml" />
-        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../ExchangeRates/res" />
-        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../ExchangeRates/assets" />
-        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../ExchangeRates/libs" />
-        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../ExchangeRates/proguard_logs" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../MovieSearch/gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../MovieSearch/gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../MovieSearch/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../MovieSearch/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../MovieSearch/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../MovieSearch/libs" />
+        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../MovieSearch/proguard_logs" />
       </configuration>
     </facet>
   </component>

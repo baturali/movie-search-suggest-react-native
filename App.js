@@ -9,9 +9,9 @@
 
 import React, {Component} from 'react';
 import { StyleSheet, Image } from 'react-native';
-import { fetchAllCurrencies } from './actions';
+import { fetchAllFilms } from './actions';
 import { connect } from 'react-redux';
-import { Container, Header, Item, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Input, Badge, Spinner, Drawer, Card, CardItem } from 'native-base';
+import { Container, Header, Content, Text, Input, Card } from 'native-base';
 import FilmCard from './components/film';
 
 function debounce(a,b,c){var d,e;return function(){function h(){d=null,c||(e=a.apply(f,g))}var f=this,g=arguments;return clearTimeout(d),d=setTimeout(h,b),c&&!d&&(e=a.apply(f,g)),e}}
@@ -27,8 +27,6 @@ class App extends Component {
       },
       films: [],
       currentPage: 1,
-      filmsPerPage: 20,
-      totalResults: 0,
       searchedString: '',
       viewedPages: []
     }
@@ -37,12 +35,11 @@ class App extends Component {
   componentWillMount() {
     this.props.onFetch();
   }
-  fetchBegin = debounce((e, isTyped) => {
-    console.debug('eeeeveeent', e)
-    this.fetchFilms(e, isTyped)
+  fetchBegin = debounce((e) => {
+    this.fetchFilms(e)
   }, Bounce)
 
-  async fetchFilms(query, isTyped) {
+  async fetchFilms(query) {
     console.debug('fetchFilms', query);
     try {
       if(query.length) {
@@ -71,14 +68,11 @@ class App extends Component {
             }
           }
         }
-
-        let totalFilms = Number(data[0].totalResults)
+        
         this.setState(prevState => ({
           viewedPages: [...prevState.viewedPages, this.state.currentPage+1],
-          totalResults: totalFilms,
           searchedString: query
         }))
-        localStorage.setItem('query', query)
       }
     } catch (error) {
       console.log(error)
@@ -86,13 +80,6 @@ class App extends Component {
   }
   render() {
     let { films } = this.state
-
-    closeDrawer = () => {
-      this.drawer._root.close()
-    };
-    openDrawer = () => {
-      this.drawer._root.open()
-    };
 
     const renderFilms = films.map((film, index) => {
       return (
@@ -108,7 +95,7 @@ class App extends Component {
             <Input 
               style={{padding: 10, backgroundColor: '#fff'}}
               placeholder="Type the film name..."
-              onChangeText={(text) => this.fetchBegin(text, true)}/>
+              onChangeText={(text) => this.fetchBegin(text)}/>
           </Header>
           
           <Card style={{flex: 0, marginTop: 20}}>
@@ -127,14 +114,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currencies: state.currencies
+    films: state.films
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onFetch: () => {
-      dispatch(fetchAllCurrencies());
+      dispatch(fetchAllFilms());
     }
   };
 };

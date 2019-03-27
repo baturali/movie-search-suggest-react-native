@@ -1,1 +1,1 @@
-export const FETCH_CURRENCIES = 'FETCH_CURRENCIES';
+export const SEARCH_FILMS = 'SEARCH_FILMS';

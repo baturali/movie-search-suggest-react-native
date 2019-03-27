@@ -1,22 +1,22 @@
 // index.js
 
-import { FETCH_CURRENCIES } from './types';
+import { SEARCH_FILMS } from './types';
 import axios from 'axios';
 
 const apiUrl = 'https://api.exchangeratesapi.io/latest';
 
-export const fetchCurrencies = (currencies) => {
+export const fetchFilms = (films) => {
   return {
-    type: FETCH_CURRENCIES,
-    currencies
+    type: SEARCH_FILMS,
+    films
   }
 };
 
-export const fetchAllCurrencies = () => {
+export const fetchAllFilms = () => {
   return (dispatch) => {
     return axios.get(apiUrl)
       .then(response => {
-        dispatch(fetchCurrencies(response.data))
+        dispatch(fetchFilms(response.data))
       })
       .catch(error => {
         throw(error);
