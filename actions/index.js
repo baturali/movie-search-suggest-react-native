@@ -1,9 +1,8 @@
-// index.js
-
 import { SEARCH_FILMS } from './types';
 import axios from 'axios';
 
-const apiUrl = 'https://api.exchangeratesapi.io/latest';
+const apiUrl = 'http://www.omdbapi.com/?s=';
+const apiKey = '4dfc64fa';
 
 export const fetchFilms = (films) => {
   return {
@@ -12,14 +11,13 @@ export const fetchFilms = (films) => {
   }
 };
 
-export const fetchAllFilms = () => {
+export const fetchAllFilms = (query, currentPage) => {
   return (dispatch) => {
-    return axios.get(apiUrl)
-      .then(response => {
+    if(query && query.length) {
+      axios.get(apiUrl + query + '&page='+currentPage+'&apikey=' + apiKey)
+      .then((response) => {
         dispatch(fetchFilms(response.data))
       })
-      .catch(error => {
-        throw(error);
-      });
+    }
   };
 };
