@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "ExchangeRates.app"
-               BlueprintName = "ExchangeRates"
-               ReferencedContainer = "container:ExchangeRates.xcodeproj">
+               BuildableName = "MovieSearch.app"
+               BlueprintName = "MovieSearch"
+               ReferencedContainer = "container:MovieSearch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
                BuildableName = "ExchangeRatesTests.xctest"
                BlueprintName = "ExchangeRatesTests"
-               ReferencedContainer = "container:ExchangeRates.xcodeproj">
+               ReferencedContainer = "container:MovieSearch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -63,7 +63,7 @@
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
                BuildableName = "ExchangeRatesTests.xctest"
                BlueprintName = "ExchangeRatesTests"
-               ReferencedContainer = "container:ExchangeRates.xcodeproj">
+               ReferencedContainer = "container:MovieSearch.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ExchangeRates.app"
-            BlueprintName = "ExchangeRates"
-            ReferencedContainer = "container:ExchangeRates.xcodeproj">
+            BuildableName = "MovieSearch.app"
+            BlueprintName = "MovieSearch"
+            ReferencedContainer = "container:MovieSearch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ExchangeRates.app"
-            BlueprintName = "ExchangeRates"
-            ReferencedContainer = "container:ExchangeRates.xcodeproj">
+            BuildableName = "MovieSearch.app"
+            BlueprintName = "MovieSearch"
+            ReferencedContainer = "container:MovieSearch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ExchangeRates.app"
-            BlueprintName = "ExchangeRates"
-            ReferencedContainer = "container:ExchangeRates.xcodeproj">
+            BuildableName = "MovieSearch.app"
+            BlueprintName = "MovieSearch"
+            ReferencedContainer = "container:MovieSearch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
