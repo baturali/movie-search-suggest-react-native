@@ -48,9 +48,10 @@ class App extends Component {
 
   render() {
     let { films } = this.props
+    console.log('app', films)
     let renderFilms = [];
-    if (films && films.Search) {
-      renderFilms = films.Search.map((film, index) => {
+    if (films && films.length) {
+      renderFilms = films.map((film, index) => {
         return (
           <Container key={index}>
             <FilmCard filmInfo={film} />
@@ -63,7 +64,6 @@ class App extends Component {
         <Content 
           onScroll={({nativeEvent}) => {
             if (this.isCloseToBottom(nativeEvent) && !this.isLoading) {
-              console.log('FETCHING OMG');
               this.fetchFilms(this.state.searchedString);
             }
           }}>
