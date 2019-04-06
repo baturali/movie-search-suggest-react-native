@@ -18,6 +18,7 @@ class App extends Component {
       films: [],
       currentPage: 1,
       searchedString: '',
+      queryChanged: false,
       viewedPages: []
     }
   }
@@ -32,7 +33,13 @@ class App extends Component {
 
   async fetchFilms(query) {
     this.isLoading = true;
-    this.props.doFetch(query, this.state.currentPage)
+    if (this.state.searchedString != query) {
+      this.setState({queryChanged: true})
+    } else {
+      this.setState({queryChanged: false})
+    }
+    
+    this.props.doFetch(query, this.state.currentPage, this.state.queryChanged)
     
     this.setState(prevState => ({
       searchedString: query,
@@ -96,8 +103,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    doFetch: (query, currentPage) => {
-      dispatch(fetchAllFilms(query, currentPage));
+    doFetch: (query, currentPage, queryChanged) => {
+      dispatch(fetchAllFilms(query, currentPage, queryChanged));
     }
   };
 };
