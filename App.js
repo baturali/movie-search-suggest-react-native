@@ -67,19 +67,19 @@ class App extends Component {
       })
     }
     return (
-      <Container>
+      <Container style={{flex: 1}}>
+        <Header searchBar rounded>
+          <Input 
+            style={{padding: 10, backgroundColor: '#fff'}}
+            placeholder="Type the film name..."
+            onChangeText={(text) => this.fetchBegin(text)}/>
+        </Header>
         <Content 
           onScroll={({nativeEvent}) => {
             if (this.isCloseToBottom(nativeEvent) && !this.isLoading) {
               this.fetchFilms(this.state.searchedString);
             }
           }}>
-          <Header searchBar rounded>
-            <Input 
-              style={{padding: 10, backgroundColor: '#fff'}}
-              placeholder="Type the film name..."
-              onChangeText={(text) => this.fetchBegin(text)}/>
-          </Header>
           
           <Card style={{flex: 0, marginTop: 20}}>
             {!renderFilms.length &&
