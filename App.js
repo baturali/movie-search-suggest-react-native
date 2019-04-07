@@ -1,8 +1,43 @@
 import React, {Component} from 'react';
+import { StyleSheet } from 'react-native';
 import { fetchAllFilms } from './actions';
 import { connect } from 'react-redux';
 import { Container, Header, Content, Text, Input, Card } from 'native-base';
 import FilmCard from './components/film';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000'
+  },
+  header: {
+    marginTop: 10,
+    backgroundColor: '#000',
+  },
+  searchBar: {
+    flex: 0.93,
+    borderRadius: 20,
+    paddingLeft: 15,
+    backgroundColor: '#fff'
+  },
+  content: {
+    color: '#fff',
+    borderColor: '#000'
+  },
+  card: {
+    flex: 0,
+    marginTop: 20,
+    color: '#fff',
+    backgroundColor: '#000',
+    borderColor: '#000'
+  },
+  text: {
+    color: '#fff',
+    borderColor: '#000',
+    marginTop: 35,
+    textAlign: 'center'
+  }
+})
 
 function debounce(a,b,c){var d,e;return function(){function h(){d=null,c||(e=a.apply(f,g))}var f=this,g=arguments;return clearTimeout(d),d=setTimeout(h,b),c&&!d&&(e=a.apply(f,g)),e}}
 const Bounce = 1000
@@ -55,22 +90,25 @@ class App extends Component {
 
   render() {
     let { films } = this.props
-    console.log('app', films)
-    let renderFilms = [];
+    console.log(films)
+    let renderFilms = []
     if (films && films.length) {
       renderFilms = films.map((film, index) => {
         return (
-          <Container key={index}>
+          <Container
+            key={index}
+            style={styles.container}>
             <FilmCard filmInfo={film} />
           </Container>
         )
       })
     }
     return (
-      <Container style={{flex: 1}}>
-        <Header searchBar rounded>
-          <Input 
-            style={{padding: 10, backgroundColor: '#fff'}}
+      <Container style={styles.container}>
+        <Header
+          style={styles.header}>
+          <Input
+            style={styles.searchBar}
             placeholder="Type the film name..."
             onChangeText={(text) => this.fetchBegin(text)}/>
         </Header>
@@ -79,11 +117,12 @@ class App extends Component {
             if (this.isCloseToBottom(nativeEvent) && !this.isLoading) {
               this.fetchFilms(this.state.searchedString);
             }
-          }}>
+          }}
+          style={styles.content}>
           
-          <Card style={{flex: 0, marginTop: 20}}>
+          <Card style={styles.card}>
             {!renderFilms.length &&
-              <Text className='defaultText'>
+              <Text style={styles.text}>
                 Type any Film name you want to search!
               </Text>
             }

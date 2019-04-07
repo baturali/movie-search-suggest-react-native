@@ -17,7 +17,11 @@ export const fetchAllFilms = (query, currentPage, queryChanged) => {
     if(query && query.length) {
       axios.get(apiUrl + query + '&page='+currentPage+'&apikey=' + apiKey)
       .then((response) => {
-        dispatch(fetchFilms(response.data, queryChanged))
+        if (response.data.Response === 'False') alert('Movie Not Found!')
+        else dispatch(fetchFilms(response.data, queryChanged))
+      })
+      .catch(error => {
+        alert(error)
       })
     }
   };

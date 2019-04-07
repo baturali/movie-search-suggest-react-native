@@ -1,15 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Image, StyleSheet } from 'react-native';
 import { Card, CardItem, Text } from 'native-base';
 
 const styles = StyleSheet.create({
+  cards: {
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    borderRadius: 15,
+    borderColor: '#000'
+  },
+  cardItem: {
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    justifyContent: 'center',
+  },
   posterImage: {
     alignSelf: 'stretch',
-    height: 400,
-    width: undefined,
-    resizeMode:'contain',
+    width: null, height: 500,
+    resizeMode: 'contain',
     flex: 1
+  },
+  textBox: {
+    color: '#fff',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    textAlign: 'center',
+    fontSize: 20
   }
 });
 
@@ -20,19 +33,21 @@ const FilmCard = (props) => {
   if(filmObj.Poster == 'N/A') Poster = defaultImage
   
   return (
-    <Card>
-      <CardItem cardBody>
+    <Card style={styles.cards}>
+      <CardItem style={styles.cardItem}>
         <Image
           style={styles.posterImage}
           source={{uri: Poster}}/>
       </CardItem>
-      <CardItem>
-        <Text>
+      <CardItem style={styles.cardItem}>
+        <Text
+          style={styles.textBox}>
           Title: { filmObj.Title }
         </Text>
       </CardItem>
-      <CardItem>
-        <Text>
+      <CardItem style={styles.cardItem}>
+        <Text
+          style={styles.textBox}>
           Year: { filmObj.Year }
         </Text>
       </CardItem>
